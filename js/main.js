@@ -39,7 +39,7 @@ function renderHeader() {
   return `
     <header class="site-header">
       <div class="container">
-        <a class="brand" href="/"><span class="brand-mark">◆</span>Carmel Science Bowl</a>
+        <a class="brand" href="/"><img src="/logo-circle.png" alt="" class="brand-mark">Carmel Science Bowl</a>
         <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
         <nav>
           <ul class="nav-list">${links}</ul>
@@ -64,7 +64,7 @@ function renderFooter() {
     <footer class="site-footer">
       <div class="container">
         <div class="footer-brand">
-          <a href="/" class="brand"><span class="brand-mark">◆</span>Carmel Science Bowl</a>
+          <a class="brand" href="/"><img src="/logo-circle.png" alt="" class="brand-mark">Carmel Science Bowl</a>
           <p>The official site of the Carmel High School Science Bowl team. A student club at Carmel High School in Carmel, Indiana.</p>
         </div>
         <div>
