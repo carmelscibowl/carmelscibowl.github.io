@@ -44,16 +44,6 @@ function renderHeader() {
         <nav>
           <ul class="nav-list">${links}</ul>
         </nav>
-        <!-- Open Graph (Discord, iMessage, Facebook, etc.) -->
-        <meta property="og:type" content="website">
-        <meta property="og:site_name" content="Carmel Science Bowl">
-        <meta property="og:title" content="About - Carmel Science Bowl">
-        <meta property="og:description" content="About the Carmel High School Science Bowl team - Our mission and our history.">
-        <meta property="og:image" content="https://carmelscibowl.github.io/assets/images/2026ATeam.jpg">
-        <meta property="og:url" content="https://carmelscibowl.github.io/index.html">
-
-        <!-- Twitter card -->
-        <meta name="twitter:card" content="summary_large_image">
       </div>
     </header>
   `;
