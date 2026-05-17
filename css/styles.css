@@ -194,6 +194,8 @@ p:last-child { margin-bottom: 0; }
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1.15rem;
@@ -209,9 +211,7 @@ p:last-child { margin-bottom: 0; }
 .brand-mark {
   height: 24px;
   width: 24px;
-  vertical-align: middle;
   margin-right: 0.5rem;
-  margin-top: -3px;  /* nudges the logo to line up optically with the text baseline */
 }
 
 .nav-toggle {
@@ -716,13 +716,12 @@ details.subject li { margin-bottom: 0.25rem; color: var(--text-muted); }
   font-size: 0.95rem;
 }
 
-/* ---- 15. Footer ---- */
-.site-footer {
-  background: var(--primary);
-  color: rgba(255,255,255,0.78);
-  padding: 3rem 0 2rem;
-  margin-top: 4rem;
-  font-size: 0.95rem;
+.site-footer .footer-brand .brand {
+  color: #fff;
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0.6rem;
 }
 
 .site-footer .container {

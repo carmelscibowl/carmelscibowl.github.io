@@ -80,7 +80,6 @@ function renderFooter() {
           <a href="mailto:carmelhighschoolsciencebowl@gmail.com">Email</a><br>
           <a href="http://instagram.com/carmelscibowl" target="_blank" rel="noopener">Instagram</a><br>
           <a href="https://discord.gg/uWHhbNFAAX" target="_blank" rel="noopener">Discord</a><br>
-          <a href="https://github.com/carmelscibowl" target="_blank" rel="noopener">GitHub</a>
         </div>
         <div class="footer-bottom">
           © 2026 Carmel High School Science Bowl. 520 E Main St, Carmel, IN 46032.
