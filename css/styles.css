@@ -1,0 +1,874 @@
+/* =========================================================
+   Carmel Science Bowl — Site Stylesheet
+   Aesthetic: refined academic, inspired by Hugo Academic theme.
+   ========================================================= */
+
+/* ---- 1. Reset & base ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ---- 2. Design tokens ---- */
+:root {
+  /* Color palette */
+  --bg:           #ffffff;
+  --bg-alt:       #f7f8fa;
+  --bg-dark:      #1a365d;
+  --text:         #1f2328;
+  --text-muted:   #57606a;
+  --text-light:   #8b949e;
+  --border:       #e1e4e8;
+  --border-strong:#d0d7de;
+
+  /* Carmel navy + gold */
+  --primary:      #1a365d;   /* Carmel navy */
+  --primary-dark: #0f2440;
+  --primary-soft: #2c5282;
+  --accent:       #c9a961;   /* warm gold */
+  --accent-dark:  #a8893f;
+
+  --link:         #2c5282;
+  --link-hover:   #1a365d;
+
+  /* Typography */
+  --font-display: "Lora", Georgia, serif;
+  --font-body:    "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono:    "JetBrains Mono", Menlo, monospace;
+
+  /* Layout */
+  --container:    1100px;
+  --container-narrow: 820px;
+  --header-h:     68px;
+
+  /* Effects */
+  --shadow-sm:    0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md:    0 2px 4px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg:    0 8px 24px rgba(0,0,0,0.10);
+  --radius:       6px;
+  --radius-lg:    10px;
+}
+
+/* ---- 3. Typography ---- */
+body {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
+h2 { font-size: clamp(1.6rem, 2.8vw, 2.2rem); margin-bottom: 1rem; }
+h3 { font-size: 1.25rem; margin-bottom: 0.6rem; }
+h4 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+
+p { margin-bottom: 1rem; }
+p:last-child { margin-bottom: 0; }
+
+.lead {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ---- 4. Layout primitives ---- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.container-narrow {
+  max-width: var(--container-narrow);
+}
+
+.section {
+  padding: 4.5rem 0;
+}
+
+.section-alt {
+  background: var(--bg-alt);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-title h2 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 48px;
+  height: 3px;
+  background: var(--accent);
+}
+
+.section-title p {
+  color: var(--text-muted);
+  margin-top: 1rem;
+}
+
+/* Grid helpers */
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 800px) {
+  .grid-3, .grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 540px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+}
+
+/* ---- 5. Header & nav ---- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--border);
+  height: var(--header-h);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: 0.01em;
+  color: var(--primary);
+}
+
+.brand:hover {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.brand-mark {
+  color: var(--accent);
+  margin-right: 0.3rem;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 0;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.nav-list {
+  display: flex;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.nav-list a {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.4rem 0;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-list a:hover {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom-color: var(--accent);
+}
+
+.nav-list a.active {
+  color: var(--primary);
+  border-bottom-color: var(--accent);
+}
+
+@media (max-width: 800px) {
+  .nav-toggle { display: block; }
+  .nav-list {
+    display: none;
+    position: absolute;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0;
+  }
+  .nav-list.open { display: flex; }
+  .nav-list a {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    border-bottom: 0;
+  }
+  .nav-list a:hover {
+    background: var(--bg-alt);
+    border-bottom: 0;
+  }
+}
+
+/* ---- 6. Hero ---- */
+.hero {
+  position: relative;
+  aspect-ratio: 2048 / 1365;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 0;
+  background:
+    linear-gradient(rgba(15, 36, 64, 0.85), rgba(15, 36, 64, 0.78)),
+    url("../assets/images/2026ATeam.jpg") center / cover no-repeat;
+  color: #fff;
+  text-align: center;
+}
+
+.hero-credit {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 1rem;
+  font-size: 0.72rem;
+  font-family: var(--font-body);
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+.hero h1 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.hero .subhead {
+  color: rgba(255,255,255,0.88);
+  font-size: 1.2rem;
+  max-width: 640px;
+  margin: 0 auto 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Smaller hero for inner pages */
+.page-hero {
+  background: var(--bg-alt);
+  padding: 3.5rem 0 2.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-hero h1 {
+  margin-bottom: 0.5rem;
+}
+
+.page-hero .subhead {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+}
+
+/* ---- 7. Buttons ---- */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.98rem;
+  border-radius: var(--radius);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--primary-dark);
+  border-color: var(--accent);
+}
+.btn-primary:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,0.6);
+}
+.btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #fff;
+  color: #fff;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.btn-secondary:hover {
+  background: var(--primary-dark);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ---- 8. Cards ---- */
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.card h3 {
+  color: var(--primary);
+}
+
+.card-link {
+  display: block;
+  color: inherit;
+}
+.card-link:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.card-link:hover h3 {
+  color: var(--accent-dark);
+}
+
+/* Result card with year & finish */
+.result-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+.result-card .year {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+.result-card .finish {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+.result-card.highlight {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, #fff 0%, rgba(201,169,97,0.06) 100%);
+}
+.result-card.highlight .finish {
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+
+/* ---- 9. Stats strip ---- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  text-align: center;
+}
+.stat .value {
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: var(--primary);
+  line-height: 1;
+}
+.stat .label {
+  margin-top: 0.5rem;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+@media (max-width: 700px) {
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 2rem 1rem; }
+}
+
+/* ---- 10. Team / member cards ---- */
+.member {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.member-photo {
+  aspect-ratio: 4/5;
+  background: var(--bg-alt) center / cover no-repeat;
+}
+.member-body {
+  padding: 1.25rem 1.25rem 1.5rem;
+}
+.member-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.15rem;
+}
+.member-role {
+  font-size: 0.9rem;
+  color: var(--accent-dark);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+.member-bio {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ---- 11. Tables (history page) ---- */
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.results-table th,
+.results-table td {
+  padding: 0.85rem 1.1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.results-table th {
+  background: var(--bg-alt);
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.results-table tr:last-child td { border-bottom: 0; }
+.results-table tr.featured td {
+  background: rgba(201,169,97,0.08);
+  font-weight: 500;
+}
+.results-table .finish-cell {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* ---- 12. Alumni / olympiad lists ---- */
+.alumni-group {
+  margin-bottom: 2.5rem;
+}
+.alumni-group h3 {
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+}
+.alumni-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.6rem 1.5rem;
+}
+.alumni-list li {
+  font-size: 0.98rem;
+}
+.alumni-list .school {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* Olympiad medal card */
+.medal-card {
+  border-left: 4px solid var(--accent);
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+.medal-card .name {
+  font-weight: 600;
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+.medal-card .detail {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-top: 0.2rem;
+}
+
+/* ---- 13. Camp page specifics ---- */
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.fact {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.1rem;
+}
+.fact .label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+.fact .value {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-top: 0.25rem;
+}
+
+.schedule {
+  width: 100%;
+  border-collapse: collapse;
+}
+.schedule td {
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+.schedule td:first-child {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--accent-dark);
+  white-space: nowrap;
+  width: 1%;
+}
+
+/* Subject syllabus accordion-ish blocks */
+details.subject {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+details.subject summary {
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary);
+  list-style: none;
+}
+details.subject summary::-webkit-details-marker { display: none; }
+details.subject summary::after {
+  content: "+";
+  float: right;
+  color: var(--accent-dark);
+  transition: transform 0.2s;
+  font-weight: 400;
+}
+details.subject[open] summary::after {
+  content: "–";
+}
+details.subject[open] {
+  border-color: var(--accent);
+}
+details.subject .subject-body {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+details.subject ul { margin: 0.5rem 0 0 1.25rem; list-style: disc; }
+details.subject li { margin-bottom: 0.25rem; color: var(--text-muted); }
+
+/* FAQ */
+.faq details {
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+}
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--primary);
+  list-style: none;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+";
+  float: right;
+  color: var(--accent-dark);
+}
+.faq details[open] summary::after { content: "–"; }
+.faq details > p,
+.faq details > div { margin-top: 0.6rem; color: var(--text-muted); }
+
+/* ---- 14. CTA tiles (home) ---- */
+.cta-tile {
+  display: block;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  color: inherit;
+  transition: all 0.18s ease;
+}
+.cta-tile:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+.cta-tile .label {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-dark);
+  font-weight: 600;
+}
+.cta-tile h3 {
+  margin: 0.4rem 0 0.5rem;
+  color: var(--primary);
+}
+.cta-tile p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+.cta-tile .arrow {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+/* ---- 15. Footer ---- */
+.site-footer {
+  background: var(--primary);
+  color: rgba(255,255,255,0.78);
+  padding: 3rem 0 2rem;
+  margin-top: 4rem;
+  font-size: 0.95rem;
+}
+
+.site-footer .container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 2.5rem;
+}
+
+@media (max-width: 700px) {
+  .site-footer .container { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+.site-footer h4 {
+  color: #fff;
+  font-size: 0.92rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.85rem;
+}
+
+.site-footer a {
+  color: rgba(255,255,255,0.85);
+  display: inline-block;
+  margin-bottom: 0.4rem;
+}
+.site-footer a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.site-footer .footer-brand .brand {
+  color: #fff;
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+.site-footer .footer-brand p {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.site-footer .footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  grid-column: 1 / -1;
+}
+
+/* ---- 16. Misc utility ---- */
+.text-center { text-align: center; }
+.mt-4 { margin-top: 2rem; }
+.mb-4 { margin-bottom: 2rem; }
+.muted { color: var(--text-muted); }
+
+.tag {
+  display: inline-block;
+  font-size: 0.78rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.tag-accent {
+  background: rgba(201,169,97,0.15);
+  color: var(--accent-dark);
+}
+
+/* Prose blocks (long-form text on About / Camp) */
+.prose p { margin-bottom: 1rem; }
+.prose ul { margin: 1rem 0 1rem 1.5rem; list-style: disc; }
+.prose ul li { margin-bottom: 0.35rem; }
+.prose h3 { margin-top: 2rem; }
+
+/* ---- Roster grids (B and C teams) ---- */
+.roster {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+  margin-top: 0;
+}
+.roster li {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 0.85rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+.roster li:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.roster-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--primary);
+}
+.roster-meta {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* ---- Group photo with labeled caption ---- */
+.group-photo {
+  margin: 0;
+}
+.group-photo img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  display: block;
+}
+.group-photo figcaption {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-alt);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+.caption-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+.caption-row {
+  margin-bottom: 0.3rem;
+  color: var(--text-muted);
+}
+.caption-row:last-child {
+  margin-bottom: 0;
+}
+.caption-label {
+  font-weight: 600;
+  color: var(--text);
+  margin-right: 0.3rem;
+}
