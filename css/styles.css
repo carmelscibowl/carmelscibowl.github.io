@@ -716,6 +716,14 @@ details.subject li { margin-bottom: 0.25rem; color: var(--text-muted); }
   font-size: 0.95rem;
 }
 
+.site-footer {
+  background: var(--primary);
+  color: rgba(255,255,255,0.78);
+  padding: 3rem 0 2rem;
+  margin-top: 4rem;
+  font-size: 0.95rem;
+}
+
 .site-footer .footer-brand .brand {
   color: #fff;
   font-size: 1.2rem;
@@ -752,12 +760,6 @@ details.subject li { margin-bottom: 0.25rem; color: var(--text-muted); }
   text-decoration: none;
 }
 
-.site-footer .footer-brand .brand {
-  color: #fff;
-  font-size: 1.2rem;
-  display: block;
-  margin-bottom: 0.6rem;
-}
 .site-footer .footer-brand p {
   color: rgba(255,255,255,0.7);
   font-size: 0.92rem;
