@@ -16,17 +16,17 @@
 // =========================================================
 
 const NAV_LINKS = [
-  { href: "/",             label: "Home" },
-  { href: "/about.html",   label: "About" },
-  { href: "/team.html",    label: "Team" },
-  { href: "/history.html", label: "History" },
-  { href: "/camp.html",    label: "Summer Camp" },
-  { href: "/join.html",    label: "Join" },
+  { href: "./index.html",             label: "Home" },
+  { href: "./about.html",   label: "About" },
+  { href: "./team.html",    label: "Team" },
+  { href: "./history.html", label: "History" },
+  { href: "./camp.html",    label: "Summer Camp" },
+  { href: "./join.html",    label: "Join" },
 ];
 
 function isActive(href) {
   const path = window.location.pathname;
-  if (href === "/") return path === "/" || path === "/index.html";
+  if (href === "./") return path === "./" || path === "./index.html";
   return path === href;
 }
 
@@ -39,7 +39,7 @@ function renderHeader() {
   return `
     <header class="site-header">
       <div class="container">
-        <a class="brand" href="/"><img src="/logo-circle.png" alt="" class="brand-mark">Carmel Science Bowl</a>
+        <a class="brand" href="./"><img src="./logo-circle.png" alt="" class="brand-mark">Carmel Science Bowl</a>
         <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
         <nav>
           <ul class="nav-list">${links}</ul>
@@ -54,16 +54,16 @@ function renderFooter() {
     <footer class="site-footer">
       <div class="container">
         <div class="footer-brand">
-          <a class="brand" href="/"><img src="/logo-circle.png" alt="" class="brand-mark">Carmel Science Bowl</a>
+          <a class="brand" href="./"><img src="./logo-circle.png" alt="" class="brand-mark">Carmel Science Bowl</a>
           <p>The official site of the Carmel High School Science Bowl team. A student club at Carmel High School in Carmel, Indiana.</p>
         </div>
         <div>
           <h4>Site</h4>
-          <a href="/about.html">About</a><br>
-          <a href="/team.html">Team</a><br>
-          <a href="/history.html">History</a><br>
-          <a href="/camp.html">Summer Camp</a><br>
-          <a href="/join.html">Join</a>
+          <a href="./about.html">About</a><br>
+          <a href="./team.html">Team</a><br>
+          <a href="./history.html">History</a><br>
+          <a href="./camp.html">Summer Camp</a><br>
+          <a href="./join.html">Join</a>
         </div>
         <div>
           <h4>Connect</h4>
